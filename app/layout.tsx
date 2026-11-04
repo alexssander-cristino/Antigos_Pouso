@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | Antigos de Pouso"
   },
   description: "Uma comunidade que celebra a preservação automobilística, os encontros e as histórias sobre rodas em Pouso Redondo, Santa Catarina.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://antigosdepouso.com.br"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   openGraph: {
     type: "website",
     locale: "pt_BR",
