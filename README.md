@@ -12,16 +12,23 @@ Experiência digital premium e acervo histórico da comunidade Antigos de Pouso,
 - Sharp (pipeline de imagens pendente)
 
 ## Desenvolvimento
+A aplicação utiliza a porta **3333** por padrão.
+
 ```bash
 npm install
 npm run dev
 ```
 
-## Verificações
+Acesse: http://localhost:3333
+
+## Build e produção
 ```bash
 npm run typecheck
 npm run build
+npm run start
 ```
+
+O servidor de produção também utiliza a porta 3333.
 
 ## Configuração
 Copie `.env.example` para `.env.local` e preencha as credenciais dos serviços. Nunca envie segredos ao Git.
