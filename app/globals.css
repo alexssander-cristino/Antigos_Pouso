@@ -206,7 +206,7 @@ body{font-size:15px;letter-spacing:0}
 @keyframes hero-enter{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 [data-reveal]{opacity:0;transform:translate3d(0,24px,0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0)}
-.hero-grain{background-image:repeating-linear-gradient(0deg,rgba(233,224,207,.025) 0,transparent 1px,transparent 3px)}
+.hero-grain{inset:0;background-image:repeating-linear-gradient(0deg,rgba(233,224,207,.025) 0,transparent 1px,transparent 3px)}
 .site-header.is-scrolled{background:rgba(16,17,16,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
 @media(prefers-reduced-motion:reduce){
  .hero-kicker,.hero-title-line,.hero-foot{animation:none;opacity:1;transform:none}
