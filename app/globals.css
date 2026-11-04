@@ -192,3 +192,23 @@ body{font-size:15px;letter-spacing:0}
  .footer-bottom{flex-wrap:wrap;gap:12px;font-size:7px}
  .footer-bottom span:nth-child(2){display:none}
 }
+
+
+/* Performance: animações nativas e revelação sob demanda */
+.hero-kicker,.hero-title-line,.hero-foot{animation:hero-enter .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-kicker{animation-delay:.12s}
+.hero-title-line{animation-duration:1s}
+.title-mask:nth-child(1) .hero-title-line{animation-delay:.22s}
+.title-mask:nth-child(2) .hero-title-line{animation-delay:.34s}
+.hero-foot{animation-delay:.58s}
+.hero-foot:nth-child(2){animation-delay:.68s}
+.hero-foot:nth-child(3){animation-delay:.76s}
+@keyframes hero-enter{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+[data-reveal]{opacity:0;transform:translate3d(0,24px,0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0)}
+.hero-grain{background-image:repeating-linear-gradient(0deg,rgba(233,224,207,.025) 0,transparent 1px,transparent 3px)}
+.site-header.is-scrolled{background:rgba(16,17,16,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(prefers-reduced-motion:reduce){
+ .hero-kicker,.hero-title-line,.hero-foot{animation:none;opacity:1;transform:none}
+ [data-reveal]{opacity:1;transform:none;transition:none}
+}
