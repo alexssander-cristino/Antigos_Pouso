@@ -2,10 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Camera, Instagram, Menu, X } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
   ["Sobre", "#sobre"],
@@ -16,37 +12,46 @@ const navigation = [
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
+    const header = document.querySelector(".site-header");
+    let lastScrolled = false;
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 32;
+      if (nextScrolled !== lastScrolled) {
+        header?.classList.toggle("is-scrolled", nextScrolled);
+        lastScrolled = nextScrolled;
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(".hero-kicker", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, delay: 0.15, ease: "power3.out" });
-      gsap.fromTo(".hero-title-line", { yPercent: 110, rotate: 2 }, { yPercent: 0, rotate: 0, duration: 1.15, stagger: 0.12, delay: 0.25, ease: "power4.out" });
-      gsap.fromTo(".hero-foot", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, delay: 0.8, ease: "power3.out" });
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
-        gsap.fromTo(element, { y: 42, opacity: 0 }, {
-          y: 0, opacity: 1, duration: 0.9, ease: "power3.out",
-          scrollTrigger: { trigger: element, start: "top 86%", once: true }
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            currentObserver.unobserve(entry.target);
+          }
         });
-      });
-      gsap.to(".hero-grain", { opacity: 0.22, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: -1 });
-    });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      revealItems.forEach((element) => observer.observe(element));
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        observer.disconnect();
+      };
+    }
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      ctx.revert();
-    };
+    revealItems.forEach((element) => element.classList.add("is-visible"));
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <main>
-      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <header className="site-header">
         <a className="brand" href="#" aria-label="Antigos de Pouso — início">
           <span className="brand-mark">AP<span>·</span></span>
           <span className="brand-name">ANTIGOS <b>DE POUSO</b></span>
