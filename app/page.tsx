@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Camera, Instagram, MapPin, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Camera, Instagram, Menu, X } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -84,7 +84,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="hero-side-label">THE ART OF CLASSIC MOTORS</div>
-        <div className="hero-location"><MapPin size={13} /> 27°15′ S — 49°56′ W</div>
+        <div className="hero-location">POUSO REDONDO · SANTA CATARINA</div>
       </section>
 
       <section className="intro section-pad" id="sobre">
