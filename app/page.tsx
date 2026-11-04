@@ -83,7 +83,7 @@ export default function HomePage() {
             <div className="hero-index hero-foot"><span>01</span><i /> <span>04</span></div>
           </div>
         </div>
-        <div className="hero-side-label">THE ART OF CLASSIC MOTORS</div>
+        <div className="hero-side-label">CULTURA AUTOMOTIVA</div>
         <div className="hero-location">POUSO REDONDO · SANTA CATARINA</div>
       </section>
 
@@ -106,7 +106,7 @@ export default function HomePage() {
 
       <section className="archive section-pad" id="arquivo">
         <div className="archive-top" data-reveal>
-          <div><p className="eyebrow"><span className="eyebrow-line" /> MEMÓRIAS SOBRE RODAS</p><h2>THE <em>ARCHIVE</em></h2></div>
+          <div><p className="eyebrow"><span className="eyebrow-line" /> MEMÓRIAS SOBRE RODAS</p><h2>O <em>ACERVO</em></h2></div>
           <p className="archive-note">Cada encontro é um capítulo.<br />Cada fotografia, uma memória preservada.</p>
         </div>
         <div className="archive-empty" data-reveal>
