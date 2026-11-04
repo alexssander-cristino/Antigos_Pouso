@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope, Oswald } from "next/font/google";
+import { DM_Serif_Display, Manrope } from "next/font/google";
 import "./globals.css";
-
-const displayFont = Oswald({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
-  display: "swap"
-});
 
 const bodyFont = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-body",
   display: "swap"
 });
 
-const editorialFont = Cormorant_Garamond({
+const editorialFont = DM_Serif_Display({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: "400",
   style: ["normal", "italic"],
   variable: "--font-editorial",
   display: "swap"
@@ -44,7 +37,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${displayFont.variable} ${bodyFont.variable} ${editorialFont.variable}`}>{children}</body>
+      <body className={`${bodyFont.variable} ${editorialFont.variable}`}>{children}</body>
     </html>
   );
 }
